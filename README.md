@@ -1,2 +1,2 @@
 # hello-world
-some description here
+It's about time!
