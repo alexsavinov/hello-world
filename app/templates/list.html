@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+	{% for book in books %}
+	<div>* <a href="/edit/{{ book.id }}">{{ book.name }}</a> <a href="/delete/{{ book.id }}">[x]</a></div>
+	{% endfor %}
+
+{% endblock %}

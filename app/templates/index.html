@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+{% for book in books.values() %}
+<div>{{book['id']}}: <a href="/edit/{{book['id']}}">{{book['name']}}</a></div>
+{% endfor %}
+{% endblock %}

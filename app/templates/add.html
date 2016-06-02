@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post" name="add">
+    {{ form.hidden_tag() }}
+    <p>
+        Please enter book name:<br>
+        {{ form.name(size=100) }}<br>
+        Autor:<br>
+        {{ form.author(size=100) }}<br>
+        Total pages (amount):<br>
+        {{ form.pages(size=10) }}<br>
+        
+        {% for error in form.errors.name %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}<br>
+    </p>
+    <p>
+    	<input type="submit" value="Confirm">
+    </p>
+</form>
+{% endblock %}
