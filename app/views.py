@@ -5,7 +5,8 @@ from jinja2 import TemplateNotFound
 from .forms import AddForm
 from sqlalchemy import func
 from sqlalchemy.orm import sessionmaker
-from app import engine, Book, books
+from app import engine, Book, books, babel
+from flask_babel import gettext
 
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -33,7 +34,7 @@ def list():
     books = session.query(Book).order_by(Book.id)
 
     return render_template("list.html",
-        title = 'Current list (' + str(total_rows) + ')',
+        title = gettext('Current list (%(name)s)', name = str(total_rows)),
         books = books)
 
 @books.route('/add', methods = ['GET', 'POST'])
@@ -45,17 +46,17 @@ def add():
     form = AddForm(request.form)
     if request.method == 'GET':
         return render_template('add.html',
-            title = 'Adding new book',
+            title = gettext('Adding new book'),
             form = form)
     elif request.method == 'POST':
         if form.validate_on_submit():
             book = Book()
             form.populate_obj(book)
-            flash('Book "' + book.name + '" added!')
+            flash(gettext('Book "%(name)s" added!', name = book.name))
             session.add(book)
             return redirect('/')
         else:
-            flash('Adding failed! Fill all fields!')
+            flash(gettext('Adding failed! Fill all fields!'))
             return redirect('/add')
 
 @books.route('/edit/<id>', methods = ['GET', 'POST'])
@@ -68,15 +69,15 @@ def edit(id):
     form = AddForm(request.form, obj=book)
     if request.method == 'GET':
         return render_template('add.html',
-            title = 'Editing book',
+            title = gettext('Editing book'),
             form = form)
     elif request.method == 'POST':
         if form.validate_on_submit():
             book = session.query(Book).get(id)
             form.populate_obj(book)
-            flash('Book "' + book.name + '" edited!')
+            flash(gettext('Book "%(name)s" edited!', name = book.name))
         else:
-            flash('Adding failed! Fill all fields!')
+            flash(gettext('Adding failed! Fill all fields!'))
         return redirect('/')
 
 @books.route('/delete/<id>')
@@ -86,6 +87,10 @@ def delete(id):
     """
 
     book = session.query(Book).get(id)
-    flash('Book "' + book.name + '" deleted!')
+    flash(gettext('Book "%(name)s" deleted!', name = book.name))
     session.delete(book)
     return redirect('/')
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(current_app.config['LANGUAGES'].keys())

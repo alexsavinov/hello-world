@@ -4,11 +4,11 @@
 <form method="post" name="add">
     {{ form.hidden_tag() }}
     <p>
-        Please enter book name:<br>
+        {{ _('Please enter book name:') }}<br>
         {{ form.name(size=100) }}<br>
-        Autor:<br>
+        {{ _('Author:') }}<br>
         {{ form.author(size=100) }}<br>
-        Total pages (amount):<br>
+         {{ _('Total pages (amount):') }}<br>
         {{ form.pages(size=10) }}<br>
         
         {% for error in form.errors.name %}

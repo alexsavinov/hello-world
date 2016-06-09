@@ -1,0 +1,75 @@
+# Translations template for PROJECT.
+# Copyright (C) 2016 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-06-08 17:37+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#: views.py:37
+#, python-format
+msgid "Current list (%(name)s)"
+msgstr ""
+
+#: views.py:49
+msgid "Adding new book"
+msgstr ""
+
+#: views.py:55
+#, python-format
+msgid "Book \"%(name)s\" added!"
+msgstr ""
+
+#: views.py:59 views.py:80
+msgid "Adding failed! Fill all fields!"
+msgstr ""
+
+#: views.py:72
+msgid "Editing book"
+msgstr ""
+
+#: views.py:78
+#, python-format
+msgid "Book \"%(name)s\" edited!"
+msgstr ""
+
+#: views.py:90
+#, python-format
+msgid "Book \"%(name)s\" deleted!"
+msgstr ""
+
+#: templates/add.html:7
+msgid "Please enter book name:"
+msgstr ""
+
+#: templates/add.html:9
+msgid "Author:"
+msgstr ""
+
+#: templates/add.html:11
+msgid "Total pages (amount):"
+msgstr ""
+
+#: templates/base.html:5 templates/base.html:7 templates/base.html:12
+msgid "Book library"
+msgstr ""
+
+#: templates/base.html:13
+msgid "Home"
+msgstr ""
+
+#: templates/base.html:13
+msgid "Add"
+msgstr ""
+

@@ -4,8 +4,10 @@ from flask import Flask, Blueprint
 from sqlalchemy import create_engine, Column, Integer, String, func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from flask_babel import Babel
 
 app = Flask(__name__)
+
 books = Blueprint('books', __name__)
 
 # init database
@@ -13,6 +15,8 @@ engine = create_engine('sqlite:///books.db', echo=False)
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
 session = Session()
+
+babel = Babel(app)
 
 class Book(Base):
     """

@@ -1,6 +1,6 @@
 """Forms module."""
 
-from flask.ext.wtf import Form
+from flask_wtf import Form
 from wtforms import TextField, IntegerField
 from wtforms.validators import Required, NumberRange
 

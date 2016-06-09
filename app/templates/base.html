@@ -2,15 +2,15 @@
   
   <head>
     {% if title %}
-      <title>{{ title }} - Book library</title>
+      <title>{{ title }} - {{ _('Book library') }}</title>
     {% else %}
-      <title>Book library</title>
+      <title>{{ _('Book library') }}</title>
     {% endif %}
   </head>
 
   <body>
-    <h2>Book library: {{ title }}</h2>
-    <div><a href="/">Home</a> <a href="/add">Add</a></div>
+    <h2>{{ _('Book library') }}: {{ title }}</h2>
+    <div><a href="/">{{ _('Home') }}</a> <a href="/add">{{ _('Add') }}</a></div>
     <hr>
     
     {% with messages = get_flashed_messages() %}
