@@ -1,22 +1,17 @@
 """Application initialization module."""
 
-from flask import Flask, Blueprint
+#from flask import Flask
 from sqlalchemy import create_engine, Column, Integer, String, func
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from flask_babel import Babel
-
-app = Flask(__name__)
-
-books = Blueprint('books', __name__)
 
 # init database
 engine = create_engine('sqlite:///books.db', echo=False)
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
 session = Session()
-
-babel = Babel(app)
+babel = Babel()
 
 class Book(Base):
     """
@@ -31,7 +26,7 @@ class Book(Base):
     author = Column(String(150))
     pages = Column(Integer)
 
-from app import views
+#from app import views
 
 def check_db():
     """
@@ -49,10 +44,16 @@ def create_app(config_filename=None):
     """
     Function to creating instance of application.
     """
+ 
+    from flask import Flask
+    app = Flask(__name__)
 
     if config_filename is not None:
         app.config.from_pyfile(config_filename)
 
+    from app.books.views import books
     app.register_blueprint(books)
 
+    babel.init_app(app)
+    
     return app

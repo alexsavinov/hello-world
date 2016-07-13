@@ -9,6 +9,6 @@ class AddForm(Form):
     Class to determine the form fields.
     """
 
-    name = TextField('name', validators = [Required()])
-    author = TextField('author', validators = [Required()])
-    pages = IntegerField('pages', validators = [NumberRange()])
+    name = TextField('name', validators=[Required()])
+    author = TextField('author', validators=[Required()])
+    pages = IntegerField('pages', validators=[NumberRange()])
